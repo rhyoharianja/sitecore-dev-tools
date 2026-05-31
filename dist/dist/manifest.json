@@ -1,0 +1,39 @@
+﻿{
+  "manifest_version": 3,
+  "name": "Sitecore Dev Tools",
+  "version": "1.2.0",
+  "description": "Sitecore Scriban editor: syntax highlighting, themes, autocomplete, indent guide, modal editor",
+
+  "permissions": ["storage", "tabs", "activeTab"],
+
+  "host_permissions": [
+    "*://*/sitecore/*",
+    "*://*.local/*",
+    "*://localhost/*",
+    "*://127.0.0.1/*"
+  ],
+
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*/sitecore/*",
+        "*://*.local/*",
+        "*://localhost/*",
+        "*://127.0.0.1/*"
+      ],
+      "js": ["content.js"],
+      "run_at": "document_idle",
+      "all_frames": true
+    }
+  ],
+
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Sitecore Dev Tools"
+  },
+
+  "web_accessible_resources": [{
+    "resources": ["ce-page.js", "ee-ribbon.js", "ce-media-usage.js"],
+    "matches": ["<all_urls>"]
+  }]
+}
