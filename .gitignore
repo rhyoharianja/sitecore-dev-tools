@@ -1,0 +1,4 @@
+# Hanya dist/ dan zip yang di-track, tidak ada source code
+*.log
+.DS_Store
+Thumbs.db

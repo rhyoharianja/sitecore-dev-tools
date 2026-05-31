@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sitecore Dev Tools</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="popup">
+
+    <!-- Header -->
+    <header>
+      <div class="header-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>
+        </svg>
+      </div>
+      <div>
+        <div class="header-title">Sitecore Dev Tools</div>
+        <div class="header-sub">By : SGKH</div>
+      </div>
+    </header>
+
+    <!-- Status -->
+    <div class="status-row">
+      <span class="status-label">Editor aktif di halaman ini</span>
+      <span class="badge" id="editorCount">–</span>
+    </div>
+
+    <!-- Master toggle -->
+    <section>
+      <div class="row-between">
+        <div>
+          <div class="section-title">Auto-detect Scriban</div>
+          <div class="section-desc">Aktifkan deteksi otomatis textarea Scriban</div>
+        </div>
+        <label class="switch">
+          <input type="checkbox" id="chkEnabled" checked>
+          <span class="slider"></span>
+        </label>
+      </div>
+    </section>
+
+    <!-- Content Editor State Preservation -->
+    <section>
+      <div class="row-between">
+        <div>
+          <div class="section-title">Preserve Editor State</div>
+          <div class="section-desc">Stay di halaman yang sama setelah refresh &amp; tree tetap ter-expand</div>
+        </div>
+        <label class="switch">
+          <input type="checkbox" id="chkCePreserve">
+          <span class="slider"></span>
+        </label>
+      </div>
+      <div id="ceStateInfo" class="ce-state-info" style="display:none">
+        <div class="ce-state-row">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0;opacity:.6">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
+          </svg>
+          <span class="ce-saved-path" id="ceSavedPath">–</span>
+        </div>
+        <button type="button" class="ce-clear-btn" id="btnCeClear">Clear</button>
+      </div>
+    </section>
+
+    <!-- Theme selector -->
+    <section>
+      <div class="section-title">Tema Editor</div>
+      <select id="themeSelect" class="theme-select">
+        <option value="monokai">Monokai (Default)</option>
+        <option value="one-dark">One Dark</option>
+        <option value="dracula">Dracula</option>
+        <option value="github-dark">GitHub Dark</option>
+        <option value="github-light">GitHub Light</option>
+        <option value="material-dark">Material Dark</option>
+        <option value="material-light">Material Light</option>
+        <option value="nord">Nord</option>
+        <option value="solarized-dark">Solarized Dark</option>
+        <option value="solarized-light">Solarized Light</option>
+        <option value="light">Default Light</option>
+      </select>
+    </section>
+
+    <!-- Feature toggles -->
+    <section>
+      <div class="section-title">Fitur Editor</div>
+      <div class="feature-list">
+
+        <div class="feature-row">
+          <div class="feature-text">
+            <span class="feature-name">HTML Highlighting</span>
+            <span class="feature-desc">Warnai tag, class, id HTML dalam template</span>
+          </div>
+          <label class="switch switch-sm">
+            <input type="checkbox" id="chkHtmlHighlight" checked>
+            <span class="slider"></span>
+          </label>
+        </div>
+
+        <div class="feature-row">
+          <div class="feature-text">
+            <span class="feature-name">Autocomplete &amp; Suggest</span>
+            <span class="feature-desc">Saran kode Sitecore SXA Scriban otomatis</span>
+          </div>
+          <label class="switch switch-sm">
+            <input type="checkbox" id="chkAutocomplete" checked>
+            <span class="slider"></span>
+          </label>
+        </div>
+
+        <div class="feature-row">
+          <div class="feature-text">
+            <span class="feature-name">Error Detection (Linter)</span>
+            <span class="feature-desc">Deteksi tag/block Scriban tidak ditutup</span>
+          </div>
+          <label class="switch switch-sm">
+            <input type="checkbox" id="chkLint" checked>
+            <span class="slider"></span>
+          </label>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Indent Guide -->
+    <section>
+      <div class="section-title">Indent Guide</div>
+      <div class="feature-list">
+
+        <div class="feature-row">
+          <div class="feature-text">
+            <span class="feature-name">Aktifkan Indent Guide</span>
+            <span class="feature-desc">Tampilkan garis panduan indentasi di editor</span>
+          </div>
+          <label class="switch switch-sm">
+            <input type="checkbox" id="chkIndent">
+            <span class="slider"></span>
+          </label>
+        </div>
+
+        <div class="feature-row indent-sub" id="indentStyleRow">
+          <div class="feature-text">
+            <span class="feature-name">Gaya Garis</span>
+          </div>
+          <div class="style-toggle">
+            <button type="button" class="style-btn active" id="btnStyleSolid" data-style="solid">Solid</button>
+            <button type="button" class="style-btn" id="btnStyleDashed" data-style="dashed">Dashed</button>
+          </div>
+        </div>
+
+        <div class="feature-row indent-sub" id="indentColorRow">
+          <div class="feature-text">
+            <span class="feature-name">Warna Garis</span>
+            <span class="feature-desc" id="indentColorHex">#4a5568</span>
+          </div>
+          <input type="color" id="indentColor" value="#4a5568" class="color-picker">
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Manual enhance -->
+    <section>
+      <div class="section-title">Manual</div>
+      <button class="action-btn" id="btnForce">Enhance Semua Textarea</button>
+      <div class="section-desc" style="margin-top:5px">
+        Paksa enhancement tanpa deteksi otomatis (berguna jika auto-detect tidak mengenali editor)
+      </div>
+    </section>
+
+    <footer>Sitecore Dev Tools · SGKH</footer>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>
