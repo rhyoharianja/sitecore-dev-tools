@@ -31,6 +31,10 @@
 <a href="https://paypal.me/sgkharianja" target="_blank">
   <img src="https://img.shields.io/badge/Donate-PayPal-0070BA?style=for-the-badge&logo=paypal&logoColor=white" alt="Donate with PayPal" height="40"/>
 </a>
+&nbsp;&nbsp;
+<a href="https://saweria.co/rhioharianja" target="_blank">
+  <img src="https://img.shields.io/badge/Saweria-Donate-F97316?style=for-the-badge&logo=ko-fi&logoColor=white" alt="Donate via Saweria" height="40"/>
+</a>
 
 *Jika extension ini membantu pekerjaan kamu, belikan saya secangkir kopi*
 
@@ -145,7 +149,11 @@ Didistribusikan di bawah lisensi **MIT**. Lihat [LICENSE](LICENSE) untuk detail.
 <br/>
 
 <a href="https://paypal.me/sgkharianja" target="_blank">
-  <img src="https://img.shields.io/badge/Buy_Me_a_Coffee-Donate_via_PayPal-0070BA?style=for-the-badge&logo=paypal&logoColor=white" alt="Donate via PayPal" height="36"/>
+  <img src="https://img.shields.io/badge/PayPal-Donate-0070BA?style=for-the-badge&logo=paypal&logoColor=white" alt="Donate via PayPal" height="36"/>
+</a>
+&nbsp;&nbsp;
+<a href="https://saweria.co/rhioharianja" target="_blank">
+  <img src="https://img.shields.io/badge/Saweria-Donate-F97316?style=for-the-badge&logo=ko-fi&logoColor=white" alt="Donate via Saweria" height="36"/>
 </a>
 
 </div>
